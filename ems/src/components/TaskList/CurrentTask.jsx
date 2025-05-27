@@ -1,6 +1,11 @@
 import React from "react";
 
-const AcceptTask = ({ data }) => {
+const CurrentTask = ({ data }) => {
+
+  const completeHandler = (() =>{
+    
+  })
+  
   return (
     <div className="flex-shrink-0 h-full w-[300px] p-5 bg-green-400 rounded-xl">
       <div className="flex items-center justify-between">
@@ -14,7 +19,7 @@ const AcceptTask = ({ data }) => {
       </h2>
       <p className="mt-2 text-sm text-black">{data.task_description}</p>
       <div className="flex justify-between mt-2">
-        <button className="px-2 py-1 text-sm bg-green-500">
+        <button onClick={ completeHandler } className="px-2 py-1 text-sm bg-green-500">
           Mark as Completed
         </button>
         <button className="px-2 py-1 text-sm bg-red-500">Mark as Failed</button>
@@ -23,4 +28,4 @@ const AcceptTask = ({ data }) => {
   );
 };
 
-export default AcceptTask;
+export default CurrentTask;

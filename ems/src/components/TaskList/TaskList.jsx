@@ -1,11 +1,10 @@
 import React from "react";
-import AcceptTask from "./AcceptTask";
+import CurrentTask from "./CurrentTask";
 import NewTask from "./NewTask";
 import CompleteTask from "./CompleteTask";
 import FailedTask from "./FailedTask";
 
 const TaskList = ({ data }) => {
-  
   return (
     <div
       id="tasklist"
@@ -13,7 +12,7 @@ const TaskList = ({ data }) => {
     >
       {data.tasks.map((elem, idx) => {
         if (elem.active_task) {
-          return <AcceptTask key={idx} data={elem} />;
+          return <CurrentTask key={idx} data={elem} />;
         }
         if (elem.new_task) {
           return <NewTask key={idx} data={elem} />;
@@ -25,6 +24,22 @@ const TaskList = ({ data }) => {
           return <FailedTask key={idx} data={elem} />;
         }
       })}
+
+      {/* {data.tasks.map((elem, idx) => {
+        if (elem.active_task === true || elem.active_task === "true") {
+          return <AcceptTask key={idx} data={elem} />;
+        }
+        if (elem.new_task === true || elem.new_task === "true") {
+          return <NewTask key={idx} data={elem} />;
+        }
+        if (elem.completed_task === true || elem.completed_task === "true") {
+          return <CompleteTask key={idx} data={elem} />;
+        }
+        if (elem.failed_task === true || elem.failed_task === "true") {
+          return <FailedTask key={idx} data={elem} />;
+        }
+        return null;
+      })} */}
     </div>
   );
 };

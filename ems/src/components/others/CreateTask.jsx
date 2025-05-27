@@ -1,11 +1,10 @@
 import React, { useContext, useState } from "react";
-import EmployeeDashboard from './../Dashboard/EmployeeDashboard';
+import EmployeeDashboard from "./../Dashboard/EmployeeDashboard";
 import { AuthContext } from "../../context/AuthProvider";
 
 const CreateTask = () => {
-
   const [userData, setUserData] = useContext(AuthContext);
-  
+
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDate, setTaskDate] = useState("");
   const [taskAsign, setTaskAsign] = useState("");
@@ -17,7 +16,6 @@ const CreateTask = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    
     setNewTask({
       active_task: false,
       completed_task: false,
@@ -28,19 +26,36 @@ const CreateTask = () => {
       taskDescription,
       taskTitle,
     });
-    
-    const data = userData
-    
-    data.forEach(function (elem) {
-      if (taskAsign == elem.firstname) {
-        elem.tasks.push(newTask)
-        elem.taskCounts.new = elem.taskCounts.new+1
+
+    // const data = userData
+
+    // data.forEach(function (elem) {
+    //   if (taskAsign == elem.firstname) {
+    //     elem.tasks.push(newTask)
+    //     elem.taskCounts.new = elem.taskCounts.new+1
+    //   }
+    // })
+    // setUserData(data)
+    // console.log(data)
+
+    const updatedData = userData.map((elem) => {
+      if (taskAsign === elem.firstname) {
+        return {
+          ...elem,
+          tasks: [...elem.tasks, newTask],
+          taskCounts: {
+            ...elem.taskCounts,
+            new: elem.taskCounts.new + 1,
+          },
+        };
       }
-    })
-    setUserData(data)
-    console.log(data)
-    
-    alert("Your task is created successfully"); 
+      return elem;
+    });
+
+    setUserData(updatedData);
+    console.log(updatedData)
+
+    alert("Your task is created successfully");
     setTaskTitle("");
     setTaskDate("");
     setTaskAsign("");

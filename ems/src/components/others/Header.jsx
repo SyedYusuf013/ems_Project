@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import App from "../../App";
 
-const Header = ({changeUser}) => { 
+const Header = ({ changeUser, data }) => {
   // agar use state or effect use krna h to upr header me props hata kr {data} daal dena chal jayega
-  
+
   const [username, setUsername] = useState("");
 
-  // useEffect(() => {
-  //   if (!data) {
-  //     setUsername("Admin");
-  //   } else {
-  //     setUsername(data.firstname);
-  //   }
-  // }, [data]);
+  useEffect(() => {
+    if (!data) {
+      setUsername("Admin");
+    } else {
+      setUsername(data.firstname);
+    }
+  }, [data]);
 
   useEffect(() => {
     const storedUser = localStorage.getItem("loggedInUser");
@@ -28,9 +28,28 @@ const Header = ({changeUser}) => {
     }
   }, []);
 
+  // useEffect(() => {
+  //   const storedUser = localStorage.getItem("loggedInUser");
+  //   if (storedUser) {
+  //     try {
+  //       const parsedUser = JSON.parse(storedUser);
+  //       if (parsedUser?.firstname) {
+  //         setUsername(parsedUser.firstname);
+  //       } else {
+  //         setUsername("Admin"); // fallback if firstname is missing
+  //       }
+  //     } catch (error) {
+  //       console.error("Invalid JSON in localStorage for 'loggedInUser'");
+  //       setUsername("Admin");
+  //     }
+  //   } else {
+  //     setUsername("Admin");
+  //   }
+  // }, []);
+
   const logOutUser = () => {
-    localStorage.setItem("loggedInUser",'');
-    changeUser('')
+    localStorage.setItem("loggedInUser", "");
+    changeUser("");
   };
 
   return (

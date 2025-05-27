@@ -30,7 +30,12 @@ const App = () => {
   // console.log(user)
 
   const handleLogin = (email, password) => {
-    if (email == "admin.one@example.com" && password == "123") {
+    if (email == "admin.syed@example.com" && password == "123") {
+      setUser("admin");
+      localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+      // console.log(user);
+    }
+    if (email == "admin.yusuf@example.com" && password == "123") {
       setUser("admin");
       localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
       // console.log(user);
