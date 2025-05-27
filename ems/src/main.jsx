@@ -4,11 +4,11 @@ import "./index.css";
 import App from "./App.jsx";
 import AuthProvider from "./context/AuthProvider.jsx";
 
-// localStorage.clear() for cleaning the data on browser localstorage
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
       <App />
     </AuthProvider>
-  </StrictMode>
+  </StrictMode> 
 );
