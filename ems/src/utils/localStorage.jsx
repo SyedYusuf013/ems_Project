@@ -268,12 +268,12 @@ const admins = [
     "email": "admin.one@example.com",
     "password": "123",
   },
-  // {
-  //   // "id": 102,
-  //   // // "firstname": "Yusuf",
-  //   // "email": "admin.two@example.com",
-  //   // "password": "123",
-  // },
+  {
+    "id": 102,
+    "firstname": "Yusuf",
+    "email": "admin.two@example.com",
+    "password": "123",
+  },
 ];
 
 export const setLocalStorage = () => {
